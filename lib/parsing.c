@@ -3,7 +3,13 @@
 #include <math.h>
 // implement interpolation here
 int interpolation(uint16_t channel) {
-	// write interpolation code here
+	uint16_t rc_max = 2047;
+	uint8_t sabertooth_max = 255;
+
+	if (channel > rc_max) {
+		channel = rc_max;
+	}
+	return (uint8_t)((float)channel / rc_max * sabertooth_max);// write interpolation code here
 }
 // creating 11 bit channel
 uint16_t *parse_buffer(uint8_t buff[]) { 
